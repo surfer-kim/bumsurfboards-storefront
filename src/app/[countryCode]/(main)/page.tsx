@@ -1,14 +1,15 @@
 import { Metadata } from "next"
 
-import FeaturedProducts from "@modules/home/components/featured-products"
-import Hero from "@modules/home/components/hero"
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
+import Carousel from "@modules/home/components/carousel"
+import Collection from "@modules/home/components/collection"
+import FeaturedProducts from "@modules/home/components/featured-products"
 
 export const metadata: Metadata = {
-  title: "Medusa Next.js Starter Template",
+  title: "Bumsurfboards",
   description:
-    "A performant frontend ecommerce starter template with Next.js 15 and Medusa.",
+    "A premium surfboards E-Commerce website for the ultimate surfing experience",
 }
 
 export default async function Home(props: {
@@ -24,18 +25,17 @@ export default async function Home(props: {
     fields: "id, handle, title",
   })
 
-  if (!collections || !region) {
-    return null
-  }
-
   return (
     <>
-      <Hero />
-      <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
-        </ul>
-      </div>
+      <Carousel />
+      <Collection />
+      {region && collections?.length > 0 && (
+        <div className="py-12">
+          <ul className="flex flex-col gap-x-6">
+            <FeaturedProducts collections={collections} region={region} />
+          </ul>
+        </div>
+      )}
     </>
   )
 }
