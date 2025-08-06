@@ -1,11 +1,11 @@
 {
-  "name": "medusa-next",
+  "name": "bumsurfboards",
   "version": "1.0.3",
   "private": true,
-  "author": "Kasper Fabricius Kristensen <kasper@medusajs.com> & Victor Gerbrands <victor@medusajs.com> (https://www.medusajs.com)",
-  "description": "Next.js Starter to be used with Medusa V2",
+  "author": "Jaosn Kim <kims07231992@gmail.com>",
+  "description": "Bumsurfboards",
   "keywords": [
-    "medusa-storefront"
+    "bumsurfboards"
   ],
   "scripts": {
     "dev": "next dev --turbopack -p 8000",
@@ -19,8 +19,8 @@
     "@medusajs/js-sdk": "latest",
     "@medusajs/ui": "latest",
     "@radix-ui/react-accordion": "^1.2.1",
-    "@stripe/react-stripe-js": "^1.7.2",
-    "@stripe/stripe-js": "^1.29.0",
+    "@stripe/react-stripe-js": "^3.8.1",
+    "@stripe/stripe-js": "^7.7.0",
     "lodash": "^4.17.21",
     "next": "^15.3.1",
     "pg": "^8.11.3",
@@ -28,6 +28,7 @@
     "react": "19.0.0-rc-66855b96-20241106",
     "react-country-flag": "^3.1.0",
     "react-dom": "19.0.0-rc-66855b96-20241106",
+    "resend": "^4.7.0",
     "server-only": "^0.0.1",
     "tailwindcss-radix": "^2.8.0",
     "webpack": "^5"
