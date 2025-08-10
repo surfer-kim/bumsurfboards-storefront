@@ -7,9 +7,24 @@ import Collection from "@modules/home/components/collection"
 import FeaturedProducts from "@modules/home/components/featured-products"
 
 export const metadata: Metadata = {
-  title: "Bumsurfboards",
-  description:
-    "A premium surfboards E-Commerce website for the ultimate surfing experience",
+  title: 'Bumsurfboards | Premium Surfboards for Every Wave',
+  description: 'A premium surfboards e-commerce website for the ultimate surfing experience.',
+  openGraph: {
+    title: 'Bumsurfboards',
+    description: 'Premium surfboards for all levels. Shop now and ride the perfect wave.',
+    url: 'https://bumsurfboards.com',
+    siteName: 'Bumsurfboards',
+    images: [
+      {
+        url: 'https://bumsurfboards.com/favicon.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Bumsurfboards Home',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  }
 }
 
 export default async function Home(props: {
