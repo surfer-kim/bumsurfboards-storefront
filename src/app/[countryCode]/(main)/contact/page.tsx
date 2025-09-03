@@ -2,6 +2,7 @@
 
 import type React from "react"
 
+import { sendInquiryEmail } from "@lib/data/inquiry"
 import { Button, Heading, Label, Text } from "@medusajs/ui"
 import { useState } from "react"
 
@@ -11,13 +12,6 @@ interface FormData {
     phone: string
     subject: string
     message: string
-}
-
-interface ApiResponse {
-    success?: boolean
-    message?: string
-    error?: string
-    details?: string
 }
 
 export default function ContactPage() {
@@ -53,20 +47,18 @@ export default function ContactPage() {
         setSubmitStatus({ type: null, message: "" })
 
         try {
-            const response = await fetch("/api/contact", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            })
+            const response = await sendInquiryEmail(
+                formData.name,
+                formData.email,
+                formData.phone,
+                formData.subject,
+                formData.message
+            )
 
-            const data: ApiResponse = await response.json()
-
-            if (response.ok && data.success) {
+            if (response) {
                 setSubmitStatus({
                     type: "success",
-                    message: data.message || "Thank you for your message! We'll get back to you soon.",
+                    message: "Thank you for your message! We'll get back to you soon.",
                 })
 
                 // Reset form
@@ -80,7 +72,7 @@ export default function ContactPage() {
             } else {
                 setSubmitStatus({
                     type: "error",
-                    message: data.error || "Failed to send message. Please try again.",
+                    message: "Failed to send message. Please try again.",
                 })
             }
         } catch (error) {
